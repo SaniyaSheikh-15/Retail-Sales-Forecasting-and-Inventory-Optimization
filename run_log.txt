@@ -1,4 +1,0 @@
-Retail Forecast & Inventory Run Completed.
-Sample SKU-Store: S2_I7
-Plot: outputs/figures\sample_actual_vs_pred.png
-{'mu_L': 262.77941007984026, 'sigma_L': 17.009640969825604, 'safety_stock': 27.97836964236, 'reorder_point': 290.75777972220027, 'eoq': 707.1067811865476, 'suggested_order_qty': 707.1067811865476}
