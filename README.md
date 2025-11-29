@@ -1,58 +1,74 @@
-# Retail Sales Forecasting & Inventory Optimization System
+## 🛒 Retail Sales Forecasting & Inventory Optimization System
 
-This project is an **industry-oriented Data Science project** that simulates how
-retailers forecast demand and decide how much inventory to order.
+A Data Science project simulating real-world Demand Forecasting + Inventory Replenishment in retail & D2C.
+Forecasts item-level sales and turns those predictions into optimal order quantities using Safety Stock, Reorder Point, EOQ, and lead-time demand.
 
-It predicts **daily store–item level sales** and converts those forecasts into:
-- Safety Stock  
-- Reorder Point  
-- Suggested Order Quantity (using EOQ logic)
+This is the same pipeline retailers like Reliance Retail, BigBasket, Flipkart, Amazon use to reduce stockouts & avoid overstock build-up.
 
----
+## 📌 Objective
 
-## 🔍 Problem Statement
+| Function                        | Output                              |
+| ------------------------------- | ----------------------------------- |
+| Forecasts store/SKU-level sales | Daily / weekly predictions          |
+| Models forecast uncertainty     | Standard deviation of residuals     |
+| Computes safety stock           | Based on service level targets      |
+| Calculates reorder points       | To avoid stock-out during lead time |
+| Suggests EOQ replenishment      | Cost-optimized purchase quantity    |
+This delivers both demand planning + inventory decision automation — a complete DS + Ops workflow.
 
-Retailers lose money in two opposite ways:
+## 🌍 Industry Relevance
 
-- **Stockouts** → product not available when customer wants it → lost sales  
-- **Overstock** → too much inventory sitting in warehouse → blocked capital & high holding cost  
+Retailers lose revenue to stock-outs & working capital due to overstock.
+Demand forecasting + inventory science solves this.
 
-The goal of this project is to:
-1. Forecast future sales at **store × item × date** level.  
-2. Use those forecasts to **derive inventory recommendations** that balance service level and cost.
+This project models how enterprise supply chain teams operate:
+data → forecasting → uncertainty modelling → inventory policy → dashboard/UI
 
----
+## Used for:
+Replenishment automation
+Fill-rate improvement
+Working-capital efficiency
+Multi-SKU stocking strategy
+D2C / FMCG / Grocery retail
 
-## 🧠 Tech Stack
+## ⚙️ Tech Stack
 
-- Python 3.9+
-- pandas, numpy
-- scikit-learn (RandomForestRegressor)
-- matplotlib
-- scipy
-- joblib
+| Component           | Tools                             |
+| ------------------- | --------------------------------- |
+| Data                | pandas, numpy                     |
+| Forecasting Model   | RandomForestRegressor             |
+| Feature Engineering | Rolling stats, lags, seasonality  |
+| Inventory Science   | Safety Stock, ROP, EOQ            |
+| UI / Deployment     | Streamlit                         |
+| Mlops-ready         | Model save/load (joblib), logging |
 
----
 
-## 📁 Project Structure
+## 🚀 Run the Project Locally
+1️⃣ Create & activate environment
+python -m venv .venv
+.venv\Scripts\activate   # Windows
 
-```bash
-.
-├─ data/
-│  └─ retail_timeseries.csv
-├─ outputs/
-│  ├─ model/
-│  │  └─ retail_forecast_model.pkl
-│  ├─ figures/
-│  │  └─ sample_actual_vs_pred.png
-│  └─ logs/
-│     └─ run_log.txt
-├─ src/
-│  └─ train_forecast_inventory.py
-├─ .github/
-│  └─ workflows/
-│     └─ ci-basic.yml
-├─ README.md
-├─ requirements.txt
-├─ LICENSE
-└─ .venv/ (local env, not pushed to GitHub)
+2️⃣ Install dependencies
+pip install -r requirements.txt
+
+3️⃣ Train ML model + generate dataset
+python src/train_forecast_inventory.py
+
+Output will include:
+
+✔ Dataset created → data/retail_timeseries.csv
+✔ Trained model → outputs/model/*.pkl
+✔ Visualization → outputs/figures/sample_actual_vs_pred.png
+✔ Inventory recommendation in terminal
+
+4️⃣ Launch the UI
+streamlit run app_streamlit.py
+
+Opens dashboard at:
+http://localhost:8501
+
+
+## ⭐ Contributions Welcome
+
+Fork → Add new models → Open PR.
+Ideas like reinforcement-learning reorder strategies or Bayesian forecasting are highly appreciated.
